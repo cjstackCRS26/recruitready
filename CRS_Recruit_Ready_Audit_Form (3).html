@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recruit Ready Institutional Audit — CRS</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2A4A;
+    --navy-deep: #0F1D33;
+    --gold: #C9A84C;
+    --gold-light: #F0DFA0;
+    --gold-pale: #FBF5E4;
+    --green: #2E8B57;
+    --green-pale: #E8F5EE;
+    --white: #FFFFFF;
+    --off-white: #F7F8FC;
+    --mid: #E4E8F2;
+    --gray: #6B7A94;
+    --text: #1a2340;
+
+    --s-color: #1B4F72;
+    --m-color: #1D6A4E;
+    --a-color: #7B341E;
+    --r-color: #4A235A;
+    --t-color: #1A3A4A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy-deep);
+    padding: 28px 24px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.12);
+  }
+  .header-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 7vw, 36px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .header-title span { color: var(--gold); }
+  .header-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    margin-top: 8px;
+  }
+  .header-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--green), var(--gold));
+    margin-top: 22px;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    background: var(--white);
+    padding: 20px 20px 18px;
+    border-bottom: 1px solid var(--mid);
+  }
+  .intro p {
+    font-size: 13.5px;
+    color: var(--gray);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ── SCHOOL INFO ── */
+  .school-section {
+    background: var(--white);
+    padding: 22px 20px;
+    border-bottom: 4px solid var(--mid);
+  }
+  .school-section h3 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .field-row {
+    margin-bottom: 14px;
+  }
+  .field-row label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .field-row input, .field-row select {
+    width: 100%;
+    border: 1.5px solid var(--mid);
+    border-radius: 6px;
+    padding: 10px 13px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--off-white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .field-row input:focus, .field-row select:focus {
+    border-color: var(--gold);
+    background: var(--white);
+  }
+  .field-hint {
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+  /* ── SCALE KEY ── */
+  .scale-key {
+    background: var(--gold-pale);
+    border-left: 3px solid var(--gold);
+    padding: 14px 16px;
+    margin: 0 0 0 0;
+  }
+  .scale-key-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .scale-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .scale-pill {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--navy);
+  }
+  .scale-pill .num {
+    background: var(--navy);
+    color: var(--white);
+    width: 18px; height: 18px;
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── DIMENSION SECTIONS ── */
+  .dimension {
+    margin-bottom: 0;
+    border-bottom: 4px solid var(--mid);
+  }
+  .dim-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px 14px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--white);
+    border-bottom: 1px solid var(--mid);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .dim-letter {
+    width: 44px; height: 44px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 900;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .dim-info { flex: 1; }
+  .dim-word {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .dim-tagline {
+    font-size: 11.5px;
+    color: var(--gray);
+    font-style: italic;
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+  .dim-score-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    background: var(--navy);
+    padding: 4px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── QUESTION ── */
+  .question {
+    padding: 16px 20px 14px;
+    background: var(--white);
+    border-bottom: 1px solid var(--mid);
+    transition: background 0.15s;
+  }
+  .question:last-of-type { border-bottom: none; }
+  .question.answered { background: var(--off-white); }
+  .question-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .q-num {
+    width: 22px; height: 22px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .q-text {
+    flex: 1;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text);
+    font-weight: 400;
+  }
+  .rating-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 12px;
+    justify-content: flex-end;
+  }
+  .rating-btn {
+    width: 42px; height: 42px;
+    border-radius: 8px;
+    border: 2px solid var(--mid);
+    background: var(--off-white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex; align-items: center; justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .rating-btn:hover { border-color: var(--gold); color: var(--navy); }
+  .rating-btn.selected {
+    color: var(--white);
+    border-color: transparent;
+    transform: scale(1.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-bar-wrap {
+    background: var(--white);
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--mid);
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    box-shadow: 0 -3px 12px rgba(0,0,0,0.07);
+  }
+  .progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+  }
+  .progress-label { font-size: 11px; font-weight: 600; color: var(--gray); letter-spacing: 0.5px; }
+  .progress-count { font-size: 11px; font-weight: 700; color: var(--navy); }
+  .progress-track {
+    height: 6px;
+    background: var(--mid);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: linear-gradient(90deg, var(--navy), var(--gold));
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* ── SUBMIT ── */
+  .submit-section {
+    padding: 28px 20px 40px;
+    background: var(--white);
+  }
+  .submit-note {
+    font-size: 12px;
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+  .submit-btn {
+    width: 100%;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .submit-btn:hover { background: var(--navy-deep); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(27,42,74,0.3); }
+  .submit-btn:disabled { background: var(--mid); color: var(--gray); cursor: not-allowed; transform: none; box-shadow: none; }
+  .submit-note-warning {
+    font-size: 11.5px;
+    color: #c0392b;
+    text-align: center;
+    margin-top: 10px;
+    display: none;
+  }
+
+  /* ── RESULTS ── */
+  #results-screen {
+    display: none;
+    min-height: 100vh;
+    background: var(--navy-deep);
+  }
+  .results-header {
+    padding: 32px 24px 24px;
+    text-align: center;
+    position: relative;
+  }
+  .results-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+  .results-eyebrow {
+    font-size: 10px; font-weight: 600; letter-spacing: 3px;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .results-school-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .results-name {
+    font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 24px;
+  }
+  .score-circle {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    margin: 0 auto 10px;
+    position: relative;
+    background: rgba(201,168,76,0.07);
+  }
+  .score-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .score-denom {
+    font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 300;
+  }
+  .score-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(255,255,255,0.6);
+    margin-bottom: 6px;
+  }
+  .level-badge {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 99px;
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-top: 12px;
+    margin-bottom: 4px;
+  }
+  .level-description {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    line-height: 1.6;
+    padding: 0 10px;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  /* dimension breakdown */
+  .breakdown {
+    background: rgba(255,255,255,0.04);
+    margin: 0 16px 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .breakdown-title {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold);
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .breakdown-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .breakdown-row:last-child { border-bottom: none; }
+  .br-letter {
+    width: 30px; height: 30px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 900;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .br-word { font-size: 13px; font-weight: 500; color: var(--white); flex: 1; }
+  .br-bar-wrap { width: 80px; height: 6px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden; }
+  .br-bar { height: 100%; border-radius: 99px; transition: width 0.8s ease; }
+  .br-score { font-size: 13px; font-weight: 700; color: var(--gold); width: 40px; text-align: right; }
+
+  /* next steps */
+  .next-steps {
+    margin: 0 16px 32px;
+  }
+  .next-steps-title {
+    font-size: 10px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .next-step-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .ns-head { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .ns-body { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  .results-footer {
+    padding: 24px 20px 40px;
+    text-align: center;
+  }
+  .results-footer p {
+    font-size: 12px; color: rgba(255,255,255,0.3); font-style: italic; line-height: 1.6;
+  }
+  .results-footer strong { color: var(--gold); font-style: normal; }
+
+  .results-bar {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--green), var(--gold));
+    margin-bottom: 30px;
+  }
+
+  /* ── DOWNLOAD BUTTON ── */
+  .download-section {
+    padding: 0 16px 24px;
+  }
+  .download-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), #b8860b);
+    color: var(--navy-deep);
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    -webkit-tap-highlight-color: transparent;
+    margin-bottom: 10px;
+  }
+  .download-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); }
+  .download-btn:active { transform: translateY(0); }
+  .download-btn svg { flex-shrink: 0; }
+  .download-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.5s ease forwards; }
+  @keyframes countUp {
+    from { opacity: 0; transform: scale(0.6); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .count-up { animation: countUp 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     AUDIT FORM
+═══════════════════════════════════════════ -->
+<div id="form-screen">
+
+  <div class="header">
+    <div class="header-eyebrow">College Recruiting Standard</div>
+    <div class="header-title">Recruit Ready<br><span>Institutional Audit</span></div>
+    <div class="header-subtitle">SMART Recruit Framework Self-Assessment</div>
+    <div class="header-bar"></div>
+  </div>
+
+  <div class="intro">
+    <p>Rate your school honestly on each statement. This is a tool for growth — not judgment. Your score will reveal your school's Recruit Ready level instantly.</p>
+  </div>
+
+  <!-- School Info -->
+  <div class="school-section">
+    <h3>Your Information</h3>
+    <div class="field-row">
+      <label>Your Name</label>
+      <input type="text" id="respondent-name" placeholder="First and Last Name" autocomplete="name">
+    </div>
+    <div class="field-row">
+      <label>School Name</label>
+      <input type="text" id="school-name" placeholder="School or Institution" autocomplete="organization">
+    </div>
+    <div class="field-row">
+      <label>Your Role</label>
+      <select id="respondent-role">
+        <option value="">Select your role…</option>
+        <option>Athletic Director</option>
+        <option>Assistant Athletic Director</option>
+        <option>Head Coach</option>
+        <option>School Counselor</option>
+        <option>Academic Advisor</option>
+        <option>Administrator / Principal</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="field-row">
+      <label>Email Address</label>
+      <input type="email" id="respondent-email" placeholder="your@email.com" autocomplete="email">
+      <div class="field-hint">We'll use this to share resources based on your results</div>
+    </div>
+  </div>
+
+  <!-- Scale Key -->
+  <div class="scale-key">
+    <div class="scale-key-title">Rating Scale</div>
+    <div class="scale-pills">
+      <div class="scale-pill"><div class="num">1</div> Not in place</div>
+      <div class="scale-pill"><div class="num">2</div> Rarely</div>
+      <div class="scale-pill"><div class="num">3</div> Sometimes</div>
+      <div class="scale-pill"><div class="num">4</div> Consistently</div>
+      <div class="scale-pill"><div class="num">5</div> Fully embedded</div>
+    </div>
+  </div>
+
+  <!-- Dimensions injected by JS -->
+  <div id="dimensions-container"></div>
+
+  <!-- Sticky Progress -->
+  <div class="progress-bar-wrap">
+    <div class="progress-top">
+      <span class="progress-label">Questions Answered</span>
+      <span class="progress-count" id="progress-count">0 / 20</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <div class="submit-section">
+    <p class="submit-note">Answer all 20 questions to see your Recruit Ready score</p>
+    <button class="submit-btn" id="submit-btn" disabled onclick="showResults()">
+      See My Recruit Ready Score →
+    </button>
+    <p class="submit-note-warning" id="warn-msg">Please answer all 20 questions before submitting.</p>
+  </div>
+
+</div><!-- /form-screen -->
+
+
+<!-- ═══════════════════════════════════════════
+     RESULTS SCREEN
+═══════════════════════════════════════════ -->
+<div id="results-screen">
+  <div class="results-bar"></div>
+  <div class="results-header">
+    <div class="results-eyebrow">Your Recruit Ready Assessment</div>
+    <div class="results-school-name" id="res-school">—</div>
+    <div class="results-name" id="res-name">—</div>
+    <p class="score-label">Total Score</p>
+    <div class="score-circle count-up" style="display:none" id="score-circle">
+      <div class="score-number" id="res-score">—</div>
+      <div class="score-denom">out of 100</div>
+    </div>
+    <div class="level-badge" id="res-level-badge">—</div>
+    <div class="level-description" id="res-level-desc">—</div>
+  </div>
+
+  <div class="breakdown fade-up" id="breakdown-wrap" style="opacity:0">
+    <div class="breakdown-title">Score by Dimension</div>
+    <div id="breakdown-rows"></div>
+  </div>
+
+  <div class="next-steps fade-up" id="next-steps-wrap" style="opacity:0">
+    <div class="next-steps-title">Your Next Step</div>
+    <div id="next-step-card"></div>
+  </div>
+
+  <div class="download-section fade-up" id="download-section-wrap" style="opacity:0">
+    <button class="download-btn" onclick="downloadReport()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download My Audit Report (PDF)
+    </button>
+    <p class="download-note">Share with your principal, superintendent, or leadership team</p>
+  </div>
+
+  <div class="results-footer">
+    <p><strong>College Recruiting Standard</strong><br>Bringing College Recruiting Education<br>into the Academic Arena</p>
+  </div>
+</div><!-- /results-screen -->
+
+
+<script>
+// ── DATA ────────────────────────────────────────
+const DIMENSIONS = [
+  {
+    id: 'S', word: 'Systemic', color: '#1B4F72',
+    tagline: 'Do you have a system in place to support and guide students?',
+    questions: [
+      'Our school has a clearly defined, written process for supporting student-athletes in the college recruiting journey.',
+      'Recruiting guidance is integrated into our existing academic advising and counseling structure.',
+      'Students can access consistent, standardized recruiting resources regardless of which coach or counselor they work with.',
+      'Our school has a designated staff member or role responsible for overseeing recruiting education and support.',
+    ]
+  },
+  {
+    id: 'M', word: 'Measurable', color: '#1D6A4E',
+    tagline: 'Are you measuring the right data and identifying students early?',
+    questions: [
+      'We track and monitor which students have expressed interest in playing college sports.',
+      'We identify student-athletes with college athletic potential by their freshman or sophomore year.',
+      'We collect data on recruiting outcomes — offers, commitments, scholarship amounts — for our graduates.',
+      'We use data to evaluate the effectiveness of our recruiting education efforts and adjust our approach.',
+    ]
+  },
+  {
+    id: 'A', word: 'Accountable', color: '#7B341E',
+    tagline: 'Who is responsible for what — and are they communicating?',
+    questions: [
+      'Coaches, counselors, and administrators have clearly defined roles in supporting student-athlete recruiting.',
+      'Staff members communicate regularly with each other and with families about individual student recruiting progress.',
+      'We hold regular meetings (at least once per semester) specifically focused on student-athlete recruiting education.',
+      'Parents and students are given clear expectations and a timeline for the recruiting process at our school.',
+    ]
+  },
+  {
+    id: 'R', word: 'Resource-Rich', color: '#4A235A',
+    tagline: 'What tools do you have and are you providing them to students?',
+    questions: [
+      'Students have access to a dedicated recruiting hub, platform, or resource center (digital or physical).',
+      'We provide instruction or workshops on NCAA/NAIA eligibility requirements, recruiting rules, and timelines.',
+      'Students are taught how to create recruiting profiles, communicate with college coaches, and navigate the process.',
+      'Our school connects students to verified, reputable external recruiting resources and experts.',
+    ]
+  },
+  {
+    id: 'T', word: 'Transformative', color: '#1A3A4A',
+    tagline: 'How is your recruiting education impacting your students?',
+    questions: [
+      'Students who go through our recruiting program feel more confident and prepared entering the college search process.',
+      'Our recruiting education has expanded opportunity for students from underrepresented or under-resourced backgrounds.',
+      'We can point to measurable outcomes — scholarships earned, college placements — tied to our school\'s guidance.',
+      'Our recruiting education contributes to a culture of academic ambition, goal-setting, and college readiness on campus.',
+    ]
+  }
+];
+
+const LEVELS = [
+  { min: 85, max: 100, label: 'Recruit Ready',    bg: '#1D8348', text: '#ffffff',
+    desc: 'Your school is a model. You have embedded systems, clear accountability, and measurable outcomes. Students are equipped and empowered.',
+    next: { head: 'Consider CRS Partnership', body: 'Your school is already doing the work. Partner with CRS to certify your program and become a model for other schools in your region.' }
+  },
+  { min: 65, max: 84,  label: 'On the Path',      bg: '#1A5276', text: '#ffffff',
+    desc: 'Strong foundation with clear momentum. Several systems are working well, but gaps remain. You\'re closer than you think.',
+    next: { head: 'Target Your Two Lowest Scores', body: 'Identify the two SMART dimensions where you scored lowest. Build one concrete improvement plan for each. That focused effort will move your school quickly.' }
+  },
+  { min: 45, max: 64,  label: 'Developing',       bg: '#784212', text: '#ffffff',
+    desc: 'Good intentions, inconsistent execution. Students are receiving some support, but it\'s not systematic or equitable.',
+    next: { head: 'Prioritize Structure First', body: 'Start with the S — Systemic. If you don\'t have a defined process, everything else stays reactive. Build one clear, written workflow for how your school supports student-athletes.' }
+  },
+  { min: 25, max: 44,  label: 'Awareness Stage',  bg: '#6C3483', text: '#ffffff',
+    desc: 'The need is recognized but resources and systems are limited. You have the awareness — now you need a starting framework.',
+    next: { head: 'Find Your Internal Champion', body: 'Identify one person — a counselor, coach, or administrator — who will own this. One passionate champion with a simple plan creates more impact than a committee with no clear lead.' }
+  },
+  { min: 0,  max: 24,  label: 'Starting Point',   bg: '#922B21', text: '#ffffff',
+    desc: 'Your school is at the beginning of this journey — and that\'s okay. Every Recruit Ready school started exactly here.',
+    next: { head: 'Start the Conversation', body: 'Bring your score to your next leadership meeting. Share what you learned today. Starting the conversation is the most important first step your school can take.' }
+  }
+];
+
+// ── SCORES STATE ─────────────────────────────────
+const scores = {}; // key: "S_0", "M_2", etc.
+
+// ── BUILD FORM ───────────────────────────────────
+function buildForm() {
+  const container = document.getElementById('dimensions-container');
+  DIMENSIONS.forEach(dim => {
+    const sec = document.createElement('div');
+    sec.className = 'dimension';
+
+    // Header
+    const hdr = document.createElement('div');
+    hdr.className = 'dim-header';
+    hdr.innerHTML = `
+      <div class="dim-letter" style="background:${dim.color}">${dim.id}</div>
+      <div class="dim-info">
+        <div class="dim-word" style="color:${dim.color}">${dim.word}</div>
+        <div class="dim-tagline">${dim.tagline}</div>
+      </div>
+      <div class="dim-score-badge" id="badge-${dim.id}">0 / 20</div>
+    `;
+    sec.appendChild(hdr);
+
+    // Questions
+    dim.questions.forEach((q, qi) => {
+      const key = `${dim.id}_${qi}`;
+      const qDiv = document.createElement('div');
+      qDiv.className = 'question';
+      qDiv.id = `q-${key}`;
+
+      const globalNum = DIMENSIONS.indexOf(dim) * 4 + qi + 1;
+
+      let ratingHtml = '<div class="rating-row">';
+      for (let n = 1; n <= 5; n++) {
+        ratingHtml += `<button class="rating-btn" data-key="${key}" data-val="${n}" onclick="rate('${key}', ${n}, this)" aria-label="Rate ${n}">${n}</button>`;
+      }
+      ratingHtml += '</div>';
+
+      qDiv.innerHTML = `
+        <div class="question-row">
+          <div class="q-num" style="background:${dim.color}">${globalNum}</div>
+          <div class="q-text">${q}</div>
+        </div>
+        ${ratingHtml}
+      `;
+      sec.appendChild(qDiv);
+    });
+
+    container.appendChild(sec);
+  });
+}
+
+// ── RATE ────────────────────────────────────────
+function rate(key, val, btn) {
+  scores[key] = val;
+
+  // Update button states
+  const row = btn.closest('.rating-row');
+  const dimId = key.split('_')[0];
+  const dim = DIMENSIONS.find(d => d.id === dimId);
+
+  row.querySelectorAll('.rating-btn').forEach(b => {
+    b.classList.remove('selected');
+    b.style.background = '';
+    b.style.color = '';
+  });
+  btn.classList.add('selected');
+  btn.style.background = dim.color;
+
+  // Mark question answered
+  document.getElementById(`q-${key}`).classList.add('answered');
+
+  // Update dim badge
+  updateDimBadge(dimId);
+
+  // Update progress
+  updateProgress();
+}
+
+function updateDimBadge(dimId) {
+  const dim = DIMENSIONS.find(d => d.id === dimId);
+  let total = 0;
+  dim.questions.forEach((_, qi) => {
+    total += scores[`${dimId}_${qi}`] || 0;
+  });
+  const badge = document.getElementById(`badge-${dimId}`);
+  badge.textContent = `${total} / 20`;
+  badge.style.background = total >= 16 ? dim.color : '#1B2A4A';
+}
+
+function updateProgress() {
+  const answered = Object.keys(scores).length;
+  document.getElementById('progress-count').textContent = `${answered} / 20`;
+  document.getElementById('progress-fill').style.width = `${(answered / 20) * 100}%`;
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = answered < 20;
+}
+
+// ── RESULTS ─────────────────────────────────────
+function showResults() {
+  const answered = Object.keys(scores).length;
+  if (answered < 20) {
+    document.getElementById('warn-msg').style.display = 'block';
+    return;
+  }
+
+  // Calculate totals
+  let grandTotal = 0;
+  const dimTotals = {};
+  DIMENSIONS.forEach(dim => {
+    let t = 0;
+    dim.questions.forEach((_, qi) => { t += scores[`${dim.id}_${qi}`] || 0; });
+    dimTotals[dim.id] = t;
+    grandTotal += t;
+  });
+
+  // Find level
+  const level = LEVELS.find(l => grandTotal >= l.min && grandTotal <= l.max);
+
+  // School info
+  const school = document.getElementById('school-name').value.trim() || 'Your School';
+  const name   = document.getElementById('respondent-name').value.trim() || '';
+  const role   = document.getElementById('respondent-role').value || '';
+  const email  = document.getElementById('respondent-email').value.trim() || '';
+
+  // Populate results
+  // --- DATA COLLECTION ---
+  const auditData = {
+    name: name,
+    school: school,
+    role: role,
+    email: email,
+    totalScore: grandTotal,
+    level: level.label,
+    s_score: dimTotals['S'],
+    m_score: dimTotals['M'],
+    a_score: dimTotals['A'],
+    r_score: dimTotals['R'],
+    t_score: dimTotals['T']
+  };
+
+  fetch('https://script.google.com/macros/s/AKfycbz87L-lxiMhZKXSf_2b9eek-unFlqBH_gUAVVRIxn4Q2v_OB5kE6JxoavIP2mHuwOJo/exec', {
+    method: 'POST',
+    mode: 'no-cors',
+    cache: 'no-cache',
+    body: JSON.stringify(auditData)
+  });
+  // --- END DATA COLLECTION ---
+
+  document.getElementById('res-school').textContent = school;
+  document.getElementById('res-name').textContent = name + (role ? ` · ${role}` : '') + (email ? ` · ${email}` : '');
+  document.getElementById('res-score').textContent = grandTotal;
+
+  const circle = document.getElementById('score-circle');
+  circle.style.display = 'flex';
+  circle.style.borderColor = level.bg;
+
+  const badge = document.getElementById('res-level-badge');
+  badge.textContent = level.label;
+  badge.style.background = level.bg;
+  badge.style.color = level.text;
+
+  document.getElementById('res-level-desc').textContent = level.desc;
+
+  // Breakdown
+  const bRows = document.getElementById('breakdown-rows');
+  bRows.innerHTML = '';
+  DIMENSIONS.forEach(dim => {
+    const t = dimTotals[dim.id];
+    const pct = (t / 20) * 100;
+    const row = document.createElement('div');
+    row.className = 'breakdown-row';
+    row.innerHTML = `
+      <div class="br-letter" style="background:${dim.color}">${dim.id}</div>
+      <div class="br-word">${dim.word}</div>
+      <div class="br-bar-wrap"><div class="br-bar" style="width:0%;background:${dim.color}" data-pct="${pct}"></div></div>
+      <div class="br-score">${t}/20</div>
+    `;
+    bRows.appendChild(row);
+  });
+
+  // Next step
+  document.getElementById('next-step-card').innerHTML = `
+    <div class="next-step-card">
+      <div class="ns-head">${level.next.head}</div>
+      <div class="ns-body">${level.next.body}</div>
+    </div>
+  `;
+
+  // Store globally for PDF generation
+  window._reportData = { name, school, role, email, grandTotal, level, dimTotals };
+
+  // Switch screens
+  document.getElementById('form-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'block';
+  window.scrollTo(0, 0);
+
+  // Animate bars with delay
+  setTimeout(() => {
+    document.getElementById('breakdown-wrap').style.opacity = '1';
+    document.getElementById('next-steps-wrap').style.opacity = '1';
+    document.getElementById('download-section-wrap').style.opacity = '1';
+    document.querySelectorAll('.br-bar').forEach(bar => {
+      bar.style.width = bar.dataset.pct + '%';
+    });
+  }, 300);
+}
+
+// ── PDF REPORT ───────────────────────────────────
+function downloadReport() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'letter' });
+  const W = 215.9; // letter width mm
+  const H = 279.4; // letter height mm
+  const margin = 18;
+  const contentW = W - margin * 2;
+
+  // Brand colors
+  const NAVY    = [27, 42, 74];
+  const NAVY_D  = [15, 29, 51];
+  const GOLD    = [201, 168, 76];
+  const WHITE   = [255, 255, 255];
+  const LIGHT   = [247, 248, 252];
+  const GRAY    = [107, 122, 148];
+  const MID     = [228, 232, 242];
+
+  const DIM_COLORS = {
+    S: [27, 79, 114],
+    M: [29, 106, 78],
+    A: [123, 52, 30],
+    R: [74, 35, 90],
+    T: [26, 58, 74]
+  };
+
+  const DIM_NAMES = { S: 'Systemic', M: 'Measurable', A: 'Accountable', R: 'Resource-Rich', T: 'Transformative' };
+
+  const d = window._reportData;
+  const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  // ── PAGE BACKGROUND ──
+  doc.setFillColor(...LIGHT);
+  doc.rect(0, 0, W, H, 'F');
+
+  // ── HEADER BLOCK ──
+  doc.setFillColor(...NAVY_D);
+  doc.rect(0, 0, W, 52, 'F');
+
+  // Gold top bar
+  doc.setFillColor(...GOLD);
+  doc.rect(0, 0, W, 2.5, 'F');
+
+  // Gold-green-gold gradient bar (simulated with segments)
+  doc.setFillColor(...GOLD);
+  doc.rect(0, 49.5, W * 0.4, 2.5, 'F');
+  doc.setFillColor(46, 139, 87);
+  doc.rect(W * 0.4, 49.5, W * 0.2, 2.5, 'F');
+  doc.setFillColor(...GOLD);
+  doc.rect(W * 0.6, 49.5, W * 0.4, 2.5, 'F');
+
+  // Eyebrow
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(7);
+  doc.setTextColor(...GOLD);
+  doc.setCharSpace(2);
+  doc.text('COLLEGE RECRUITING STANDARD', margin, 13);
+  doc.setCharSpace(0);
+
+  // Main title
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(22);
+  doc.setTextColor(...WHITE);
+  doc.text('Recruit Ready Institutional Audit', margin, 24);
+
+  // Subtitle
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(10);
+  doc.setTextColor(180, 190, 210);
+  doc.text('SMART Recruit Framework Assessment Report', margin, 32);
+
+  // Date right-aligned
+  doc.setFontSize(8);
+  doc.setTextColor(...GOLD);
+  doc.text(today, W - margin, 32, { align: 'right' });
+
+  // ── RESPONDENT INFO BOX ──
+  const infoY = 60;
+  doc.setFillColor(...WHITE);
+  doc.roundedRect(margin, infoY, contentW, 26, 2, 2, 'F');
+  doc.setDrawColor(...MID);
+  doc.setLineWidth(0.3);
+  doc.roundedRect(margin, infoY, contentW, 26, 2, 2, 'S');
+
+  // Left accent
+  doc.setFillColor(...NAVY_D);
+  doc.rect(margin, infoY, 3, 26, 'F');
+
+  const col1 = margin + 8;
+  const col2 = margin + contentW * 0.5;
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(7);
+  doc.setTextColor(...GRAY);
+  doc.text('NAME', col1, infoY + 8);
+  doc.text('SCHOOL', col2, infoY + 8);
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(...NAVY);
+  doc.text(d.name || '—', col1, infoY + 15);
+  doc.text(d.school || '—', col2, infoY + 15);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7);
+  doc.setTextColor(...GRAY);
+  doc.text('ROLE', col1, infoY + 22);
+  doc.text('EMAIL', col2, infoY + 22);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  doc.setTextColor(...NAVY);
+  doc.text(d.role || '—', col1, infoY + 28);
+  // email may be cut off - truncate
+  const emailStr = d.email || '—';
+  doc.text(emailStr.length > 35 ? emailStr.substring(0,35)+'...' : emailStr, col2, infoY + 28);
+
+  // ── SCORE SECTION ──
+  const scoreY = infoY + 33;
+
+  // Score circle (left)
+  const circleX = margin + 26;
+  const circleY = scoreY + 22;
+  const circleR = 20;
+
+  doc.setFillColor(...NAVY_D);
+  doc.circle(circleX, circleY, circleR, 'F');
+  doc.setDrawColor(...GOLD);
+  doc.setLineWidth(1.5);
+  doc.circle(circleX, circleY, circleR, 'S');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(28);
+  doc.setTextColor(...GOLD);
+  doc.text(String(d.grandTotal), circleX, circleY + 4, { align: 'center' });
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7);
+  doc.setTextColor(180, 190, 210);
+  doc.text('out of 100', circleX, circleY + 11, { align: 'center' });
+
+  // Level badge (right of circle)
+  const badgeX = margin + 58;
+  const lvl = d.level;
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(7);
+  doc.setTextColor(...GRAY);
+  doc.text('RECRUIT READY LEVEL', badgeX, scoreY + 8);
+
+  // Level pill
+  const lvlColor = {
+    'Recruit Ready':    [29, 131, 72],
+    'On the Path':      [26, 82, 118],
+    'Developing':       [120, 66, 18],
+    'Awareness Stage':  [108, 52, 131],
+    'Starting Point':   [146, 43, 33],
+  }[lvl.label] || NAVY;
+
+  doc.setFillColor(...lvlColor);
+  doc.roundedRect(badgeX, scoreY + 10, 75, 10, 3, 3, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(...WHITE);
+  doc.text(lvl.label, badgeX + 37.5, scoreY + 17, { align: 'center' });
+
+  // Level description
+  doc.setFont('helvetica', 'italic');
+  doc.setFontSize(9);
+  doc.setTextColor(...GRAY);
+  const descLines = doc.splitTextToSize(lvl.desc, contentW - 58);
+  doc.text(descLines, badgeX, scoreY + 26);
+
+  // ── SMART DIMENSION BREAKDOWN ──
+  const dimY = scoreY + 52;
+
+  // Section header
+  doc.setFillColor(...NAVY_D);
+  doc.rect(margin, dimY, contentW, 8, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(7);
+  doc.setTextColor(...GOLD);
+  doc.setCharSpace(2);
+  doc.text('SMART DIMENSION BREAKDOWN', margin + 4, dimY + 5.5);
+  doc.setCharSpace(0);
+
+  const dims = ['S', 'M', 'A', 'R', 'T'];
+  let dy = dimY + 12;
+
+  dims.forEach((id, idx) => {
+    const score = d.dimTotals[id];
+    const pct = score / 20;
+    const color = DIM_COLORS[id];
+    const isEven = idx % 2 === 0;
+
+    // Row bg
+    doc.setFillColor(isEven ? 255 : 247, isEven ? 255 : 248, isEven ? 255 : 252);
+    doc.rect(margin, dy, contentW, 13, 'F');
+
+    // Color tab
+    doc.setFillColor(...color);
+    doc.rect(margin, dy, 4, 13, 'F');
+
+    // Letter
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(13);
+    doc.setTextColor(...color);
+    doc.text(id, margin + 10, dy + 9);
+
+    // Word
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.setTextColor(...NAVY);
+    doc.text(DIM_NAMES[id], margin + 18, dy + 9);
+
+    // Bar background
+    const barX = margin + 70;
+    const barW = contentW - 90;
+    const barH = 5;
+    const barY = dy + 4.5;
+    doc.setFillColor(...MID);
+    doc.roundedRect(barX, barY, barW, barH, 1.5, 1.5, 'F');
+
+    // Bar fill
+    doc.setFillColor(...color);
+    if (pct > 0) {
+      doc.roundedRect(barX, barY, barW * pct, barH, 1.5, 1.5, 'F');
+    }
+
+    // Score
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(...color);
+    doc.text(`${score}/20`, W - margin - 2, dy + 9, { align: 'right' });
+
+    dy += 14;
+  });
+
+  // ── NEXT STEP ──
+  const nsY = dy + 6;
+  doc.setFillColor(...NAVY_D);
+  doc.rect(margin, nsY, contentW, 8, 'F');
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(7);
+  doc.setTextColor(...GOLD);
+  doc.setCharSpace(2);
+  doc.text('YOUR RECOMMENDED NEXT STEP', margin + 4, nsY + 5.5);
+  doc.setCharSpace(0);
+
+  doc.setFillColor(...WHITE);
+  doc.rect(margin, nsY + 8, contentW, 28, 'F');
+  doc.setDrawColor(...MID);
+  doc.setLineWidth(0.3);
+  doc.rect(margin, nsY + 8, contentW, 28, 'S');
+
+  // Left accent
+  const lvlColorArr = {
+    'Recruit Ready':    [29, 131, 72],
+    'On the Path':      [26, 82, 118],
+    'Developing':       [120, 66, 18],
+    'Awareness Stage':  [108, 52, 131],
+    'Starting Point':   [146, 43, 33],
+  }[lvl.label] || NAVY;
+  doc.setFillColor(...lvlColorArr);
+  doc.rect(margin, nsY + 8, 3, 28, 'F');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(11);
+  doc.setTextColor(...NAVY);
+  doc.text(lvl.next.head, margin + 8, nsY + 18);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(9);
+  doc.setTextColor(...GRAY);
+  const nsLines = doc.splitTextToSize(lvl.next.body, contentW - 12);
+  doc.text(nsLines, margin + 8, nsY + 25);
+
+  // ── FOOTER ──
+  const footY = H - 22;
+  doc.setFillColor(...NAVY_D);
+  doc.rect(0, footY, W, 22, 'F');
+  doc.setFillColor(...GOLD);
+  doc.rect(0, footY, W, 1.5, 'F');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(...GOLD);
+  doc.text('College Recruiting Standard', margin, footY + 9);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7.5);
+  doc.setTextColor(160, 175, 200);
+  doc.text('Bringing College Recruiting Education into the Academic Arena', margin, footY + 15);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7.5);
+  doc.setTextColor(...GOLD);
+  doc.text('www.collegerecruitingstandard.com', W - margin, footY + 9, { align: 'right' });
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(7);
+  doc.setTextColor(160, 175, 200);
+  doc.text('Confidential — Prepared for ' + (d.school || 'Your School'), W - margin, footY + 15, { align: 'right' });
+
+  // ── SAVE ──
+  const filename = `CRS_Recruit_Ready_Audit_${(d.school || 'Report').replace(/[^a-zA-Z0-9]/g,'_')}.pdf`;
+  doc.save(filename);
+}
+
+// ── INIT ─────────────────────────────────────────
+buildForm();
+</script>
+</body>
+</html>
